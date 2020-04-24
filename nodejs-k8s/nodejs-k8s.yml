@@ -1,0 +1,63 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-web-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: node-web-app
+  ports:
+    - name: http
+      protocol: TCP
+      # ELB's port
+      port: 3000
+      targetPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-web-app
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: node-web-app
+  template:
+    metadata:
+      labels:
+        app: node-web-app
+    spec:
+      containers:
+      - name: node-web-app
+        image: naresh240/node-web-app:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
+          requests:
+            cpu: 200m
+            memory: 64Mi
+
