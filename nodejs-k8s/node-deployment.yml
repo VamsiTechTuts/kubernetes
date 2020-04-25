@@ -1,20 +1,4 @@
 ---
-kind: Service
-apiVersion: v1
-metadata:
-  name: node-web-app
-spec:
-  type: LoadBalancer
-  selector:
-    app: node-web-app
-  ports:
-    - name: http
-      protocol: TCP
-      # ELB's port
-      port: 3000
-      targetPort: 8080
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
