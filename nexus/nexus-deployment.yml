@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: nexus
-  namespace: devops-tools
+  namespace: nexus
 spec:
   replicas: 2 
   template:
