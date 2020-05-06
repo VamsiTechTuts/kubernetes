@@ -4,8 +4,9 @@ metadata:
   name: jenkins-master-svc
   labels:
     app: jenkins-master
+  namespace: jenkins
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 8080
