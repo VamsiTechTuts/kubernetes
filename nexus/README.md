@@ -56,4 +56,4 @@ Destroy namespace, deployment and service of nexus
 
      kubectl delete deploy nexus -n nexus
      kubectl delete svc nexus-service -n nexus
-     kubectl delete namspace nexus
+     kubectl delete namespace nexus
