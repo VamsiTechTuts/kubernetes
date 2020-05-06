@@ -40,10 +40,20 @@ Step7:
 ------
 For Nexus password we need to connect pods and check in file
 
-    kubectl exec -it  -- bash
-    cat /
+    kubectl exec -it nexus-85f9fcf65c-cjc9g -n nexus -- bash
+    cat /nexus-data/admin.password
   
 Step7:
 ------
-UserName: admin
-Password: <get password from file>
+SignIn into Nexus by clicking signIn button
+
+    UserName: admin
+    Password: <get password from file /nexus-data/admin.password>
+    
+Step8:
+------
+Destroy namespace, deployment and service of nexus
+
+     kubectl delete deploy nexus -n nexus
+     kubectl delete svc nexus-service -n nexus
+     kubectl delete namspace nexus
