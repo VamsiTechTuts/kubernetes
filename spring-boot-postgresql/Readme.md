@@ -10,7 +10,7 @@ Pre-requisites:
 Clone code from github:
 -------
     git clone https://github.com/VamsiTechTuts/kubernetes.git
-    cd kubernetes
+    cd kubernetes/spring-boot-postgresql/
     
 Build Maven Artifact:
 -------
