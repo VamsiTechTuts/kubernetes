@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: spring-boot-postgres-sample
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: spring-boot-postgres-sample
+      labels:
+        app: spring-boot-postgres-sample
+    spec:
+      containers:
+      - name: spring-boot-postgres-sample
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                 name: postgres-secrets
+                 key: username
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                 name: postgres-secrets
+                 key: password
+        image: naresh240/springbootpostgresrestapidemo:latest
