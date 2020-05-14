@@ -24,4 +24,4 @@ spec:
               secretKeyRef:
                  name: postgres-secrets
                  key: password
-        image: naresh240/springbootpostgresrestapidemo:latest
+        image: vamsitechtuts/springbootpostgresrestapidemo:latest
