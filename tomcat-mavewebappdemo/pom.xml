@@ -43,5 +43,6 @@
 					</configuration>
 			</plugin>
 		</plugins>
+		<finalName>mavewebappdemo</finalName>
 	</build>
 </project>

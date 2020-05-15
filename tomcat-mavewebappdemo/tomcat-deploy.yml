@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: tomcat
-        image: vamsitechtuts/tomcat-mavewebappdemo:latest
+        image: naresh240/tomcatdeploy:latest
         ports:
         - containerPort: 8080
