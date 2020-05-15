@@ -24,4 +24,9 @@ spec:
               secretKeyRef:
                  name: postgres-secrets
                  key: password
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: hostname-config
+                key: postgres_host
         image: vamsitechtuts/springbootpostgresrestapidemo:latest
