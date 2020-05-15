@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.tecmax.demo</groupId>
+	<artifactId>mavewebappdemo</artifactId>
+	<packaging>war</packaging>
+	<version>2.0.0-SNAPSHOT</version>
+	<name>mavewebappdemo Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<distributionManagement>
+		<snapshotRepository>
+    		  <id>nexus-snapshots</id>
+    		  <url>http://54.159.177.72:8081/nexus/content/maven-snapshots/snapshots</url>
+   		</snapshotRepository>
+	</distributionManagement>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+   		 <groupId>mysql</groupId>
+   		 <artifactId>mysql-connector-java</artifactId>
+   		 <version>8.0.11</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>3.0.2</version>
+					<executions>
+						<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+							<goals>
+								<goal>deploy</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<serverId>nexus</serverId>
+						<nexusUrl>http://54.159.177.72:8081//nexus/</nexusUrl>
+						<skipStaging>true</skipStaging>
+					</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
