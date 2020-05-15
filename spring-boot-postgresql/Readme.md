@@ -93,3 +93,12 @@ Use GET Method:
     http://a64d28d4626484b2687437bb81935d71-65005852.us-west-2.elb.amazonaws.com:8080/questions/1000/answers
 
 You can Test other API also.........
+
+Cluean UP process:
+-------
+    kubectl delete deploy spring-boot-postgres-sample postgres
+    kubectl delete svc spring-boot-postgres-sample postgres
+    kubectl delete pvc postgres-pv-claim
+    kubectl delete pv postgres-pv-volume
+    kubectl delete secrets postgres-secrets
+    kubectl delete configmaps hostname-config
