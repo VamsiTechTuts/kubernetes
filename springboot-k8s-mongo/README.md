@@ -72,9 +72,9 @@ check in web UI:
  
 Now we can cleanup by using below commands:
 --------
-    kubectl delete deploy postgres sonarqube
-    kubectl delete svc postgres sonarqube
-    kubectl delete pvc postgres-pv-claim sonar-data sonar-extensions
-    kubectl delete pv postgres-pv-volume sonar-pv-data sonar-pv-extensions
-    kubectl delete configmaps sonar-config
-    kubectl delete secrets postgres-secrets
+    kubectl delete deploy mongo spring-mongo-service
+    kubectl delete svc mongodb-service mongo spring-mongo-service springboot
+    kubectl delete pvc postgres-pv-claim mongo-pv-claim
+    kubectl delete pv mongo-pv-volume postgres-pv-volume
+    kubectl delete configmaps mongo-conf
+    kubectl delete secrets mongo-secret
