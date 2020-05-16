@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+  labels:
+    app: mongo
+spec:
+  selector: 
+    matchLabels:
+      app: mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mongo
+      name: mongodb-service
+    spec:
+      containers:
+      - image: mongo:latest
+        name: mongo
+        
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret
+                key: username
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secret
+                key: password
+        ports:
+        - containerPort: 27017
+          name: mongo                
+        volumeMounts:
+        - name: mongo-persistent-storage
+          mountPath: /data/db #This is the path in the container on which the mounting will take place.
+      volumes:
+      - name: mongo-persistent-storage # Obtaining 'vloume' from PVC
+        persistentVolumeClaim:
+          claimName: mongo-pv-claim          

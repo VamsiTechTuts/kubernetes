@@ -1,0 +1,4 @@
+/root/springboot-k8s-mongo/src/main/java/com/example/k8s/springbootmongo/springbootk8smongo/repository/ProductRepository.java
+/root/springboot-k8s-mongo/src/main/java/com/example/k8s/springbootmongo/springbootk8smongo/controller/ProductController.java
+/root/springboot-k8s-mongo/src/main/java/com/example/k8s/springbootmongo/springbootk8smongo/entity/Product.java
+/root/springboot-k8s-mongo/src/main/java/com/example/k8s/springbootmongo/springbootk8smongo/SpringbootK8sMongoApplication.java

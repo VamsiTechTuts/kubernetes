@@ -1,0 +1,13 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-mongo-service
+spec:
+  selector:
+    app: spring-mongo-service
+  ports:
+  - name: http 
+    port: 8080
+  type: LoadBalancer
+
