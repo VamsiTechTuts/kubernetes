@@ -79,7 +79,7 @@ Now we can cleanup by using below commands:
 --------
     kubectl delete deploy mongo spring-mongo-service
     kubectl delete svc mongodb-service mongo spring-mongo-service springboot
-    kubectl delete pvc postgres-pv-claim mongo-pv-claim
-    kubectl delete pv mongo-pv-volume postgres-pv-volume
+    kubectl delete pv mongo-pv-volume
+    kubectl delete pvc mongo-pv-claim
     kubectl delete configmaps mongo-conf
     kubectl delete secrets mongo-secret
