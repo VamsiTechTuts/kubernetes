@@ -1,0 +1,17 @@
+#Enable clusterIP Service for MongoDB communication with application, so that springBoot access the MongoDB
+---
+# Mongo Node Port RC
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mongo
+  name: mongo
+spec:
+  type: ClusterIP
+  ports:
+    - port: 27017
+      targetPort: 27017
+  selector:
+    name: mongo
+

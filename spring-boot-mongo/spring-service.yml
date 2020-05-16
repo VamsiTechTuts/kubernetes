@@ -1,0 +1,16 @@
+# To access application outside create service type NodePort
+---
+# Node Port Service
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: springboot
+  name: springboot
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    name: springboot

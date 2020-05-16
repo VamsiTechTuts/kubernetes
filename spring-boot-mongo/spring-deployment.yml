@@ -1,0 +1,20 @@
+#Create one replica of application basically creating one pod using image that pushed to DockerHub mbaurnwal546/spring-boot-mongo
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: springboot
+  name: spring-controller
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: springboot
+    spec:
+      containers:
+      - image: naresh240/spring-boot-mongo
+        name: springboot
+        ports:
+        - name: springboot
+          containerPort: 8080
