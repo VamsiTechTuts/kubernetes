@@ -64,11 +64,16 @@ Check secrets:
     kubectl get svc
     
 Now Goto Loadbalancer and check whether service comes Inservice or not, If it comes Inservice copy DNS Name of Loadbalancer 
-Check in POSTMAN App:
------
 
-check in web UI:
-----
+POST Method you can check in POSTMAN App:
+--------------
+
+
+
+Get Methods you can check in web UI:
+----------------
+ 
+ 
  
 Now we can cleanup by using below commands:
 --------
