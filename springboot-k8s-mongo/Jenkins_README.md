@@ -5,47 +5,51 @@ Pre-requisites:
     - Install Git
     - Install Maven
     - Install Docker
+    - Install Jenkins
     - EKS Cluster
     
 Clone code from github:
 -------
     git clone https://github.com/VamsiTechTuts/kubernetes.git
     cd kubernetes/springboot-k8s-mongo/
-    
-Build Maven Artifact:
--------
-    mvn clean install -DskipTests=true
- 
-Build Docker image for Springboot Application
---------------
-    docker build -t vamsitechtuts/springboot-k8s-mongo .
-  
-Docker login
--------------
-    docker login
-    
-Push docker image to dockerhub
------------
-    docker push vamsitechtuts/springboot-k8s-mongo
 
-Encode USERNAME and PASSWORD of Postgres using following commands:
---------
-    echo -n "mongoadmin" | base64
-    echo -n "admin123" | base64
-Create the Secret using kubectl apply:
+Add Jenkins to Docker Group:
+------
+    usermod -aG docker jenkins
+    service jenkins restart
+Copy kubectl file to /usr/bin path
 -------
-    kubectl apply -f mongo-secret.yml
+    cp kubectl /usr/bin
 
-Create PV and PVC for Mongo using yaml file:
+Add plugins to jenkins:
 -----
-    kubectl apply -f mongo-pv.yml
-    kubectl apply -f mongo-pvc.yml
+Goto Jenkins dashboard --> Manage Jenkins --> Manage Plugins
+Click on Available
+Select below plugins and click on Install without restart
+
+    - 	Maven Integration
+    -	Kubernetes
+    -	Kubernetes Continuous Deploy
+    -	Kubernetes Credentials Provider
     
-Deploying Mongo with kubectl apply:
------------
-    kubectl apply -f mongo-deployment.yml
-    kubectl apply -f mongo-service.yml
-    
+Create Docker credentials:
+-------
+Goto Jenkins dashboard --> Credentials
+![1](https://user-images.githubusercontent.com/63221837/82425154-c396ad00-9aa3-11ea-8cd5-258b3b485cc9.png)
+![2](https://user-images.githubusercontent.com/63221837/82425155-c396ad00-9aa3-11ea-85ec-22c5583e057d.png)
+![3](https://user-images.githubusercontent.com/63221837/82425149-c1cce980-9aa3-11ea-991e-09bfc6263069.png)
+![4](https://user-images.githubusercontent.com/63221837/82425153-c2fe1680-9aa3-11ea-9c86-372a5d9c6828.png)
+
+Click on OK
+
+Create AWS Credentials:
+-------
+Goto Jenkins dashboard --> Credentials
+![1](https://user-images.githubusercontent.com/63221837/82425154-c396ad00-9aa3-11ea-8cd5-258b3b485cc9.png)
+![2](https://user-images.githubusercontent.com/63221837/82425155-c396ad00-9aa3-11ea-85ec-22c5583e057d.png)
+![3](https://user-images.githubusercontent.com/63221837/82425149-c1cce980-9aa3-11ea-991e-09bfc6263069.png)
+
+
 Give permission for service which is running under same namespace by using rolebinding
 ----------------------
     kubectl create rolebinding default-view \
@@ -53,13 +57,12 @@ Give permission for service which is running under same namespace by using roleb
       --serviceaccount=default:default \
       --namespace=default
 
-Create configmaps for URL which we use in Springboot:
--------
-    kubectl apply -f mongo-config.yml
-Deploy Springboot Application:
--------------
-    kubectl apply -f springboot-deployment.yml
-    kubectl apply -f springboot-service.yml
+Encode USERNAME and PASSWORD of Postgres using following commands:
+--------
+    echo -n "mongoadmin" | base64
+    echo -n "admin123" | base64
+    
+
 Check secrets:
 -------
     kubectl get secrets
@@ -89,11 +92,6 @@ Get Methods you can check in web UI:
     af43efdd8377b4896841fbc4ca8da55f-1519337998.us-west-2.elb.amazonaws.com:8080/findProduct/100
     af43efdd8377b4896841fbc4ca8da55f-1519337998.us-west-2.elb.amazonaws.com:8080/deleteProduct/100
  
-Now we can cleanup by using below commands:
+Now we can cleanup:
 --------
-    kubectl delete deploy mongo spring-mongo-service
-    kubectl delete svc mongodb-service spring-mongo-service
-    kubectl delete pvc mongo-pv-claim
-    kubectl delete pv mongo-pv-volume
-    kubectl delete configmaps mongo-conf
-    kubectl delete secrets mongo-secret
+    
