@@ -60,3 +60,7 @@ Goto EC2 Service --> Loadbalancers
 ![1](https://user-images.githubusercontent.com/63221837/82456547-feafd500-9ad1-11ea-946e-9a9ea88cf065.png)
 Copy DNS name and check in WebUI along with portnumber:
 ![2](https://user-images.githubusercontent.com/63221837/82456762-46cef780-9ad2-11ea-9cce-2ea29dabe637.png)
+
+CleanUP Nodejs application:
+------------
+    helm delete nodejs-k8s
