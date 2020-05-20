@@ -47,7 +47,7 @@ Create AWS Credentials:
 Goto Jenkins dashboard --> Credentials
 ![1](https://user-images.githubusercontent.com/63221837/82425154-c396ad00-9aa3-11ea-8cd5-258b3b485cc9.png)
 ![2](https://user-images.githubusercontent.com/63221837/82425155-c396ad00-9aa3-11ea-85ec-22c5583e057d.png)
-![3](https://user-images.githubusercontent.com/63221837/82425149-c1cce980-9aa3-11ea-991e-09bfc6263069.png)
+![3](https://user-images.githubusercontent.com/63221837/82425616-618a7780-9aa4-11ea-9522-e4699300eb5d.png)
 
 
 Give permission for service which is running under same namespace by using rolebinding
