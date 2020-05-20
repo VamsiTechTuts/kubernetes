@@ -7,7 +7,13 @@ Pre-requisites:
     - Install Docker
     - Install Jenkins
     - EKS Cluster
-    
+Give permission for service which is running under same namespace by using rolebinding
+----------------------
+    kubectl create rolebinding default-view \
+      --clusterrole=view \
+      --serviceaccount=default:default \
+      --namespace=default
+      
 Clone code from github:
 -------
     git clone https://github.com/VamsiTechTuts/kubernetes.git
@@ -36,33 +42,42 @@ Create Docker credentials:
 -------
 Goto Jenkins dashboard --> Credentials
 ![1](https://user-images.githubusercontent.com/63221837/82425154-c396ad00-9aa3-11ea-8cd5-258b3b485cc9.png)
+Click on jenkins
 ![2](https://user-images.githubusercontent.com/63221837/82425155-c396ad00-9aa3-11ea-85ec-22c5583e057d.png)
+Click on Global credentials (unrestricted)
 ![3](https://user-images.githubusercontent.com/63221837/82425149-c1cce980-9aa3-11ea-991e-09bfc6263069.png)
+Click on Add Credentials
 ![4](https://user-images.githubusercontent.com/63221837/82425153-c2fe1680-9aa3-11ea-9c86-372a5d9c6828.png)
-
 Click on OK
 
 Create AWS Credentials:
 -------
 Goto Jenkins dashboard --> Credentials
 ![1](https://user-images.githubusercontent.com/63221837/82425154-c396ad00-9aa3-11ea-8cd5-258b3b485cc9.png)
+Click on jenkins
 ![2](https://user-images.githubusercontent.com/63221837/82425155-c396ad00-9aa3-11ea-85ec-22c5583e057d.png)
+Click on Global credentials (unrestricted)
 ![3](https://user-images.githubusercontent.com/63221837/82425616-618a7780-9aa4-11ea-9522-e4699300eb5d.png)
+Click on Add Credentials
+![4](https://user-images.githubusercontent.com/63221837/82426046-f7be9d80-9aa4-11ea-844d-a2f6d0a1585a.png)
+Click on OK
 
-
-Give permission for service which is running under same namespace by using rolebinding
-----------------------
-    kubectl create rolebinding default-view \
-      --clusterrole=view \
-      --serviceaccount=default:default \
-      --namespace=default
+Create kubernetes_credentials
+------
+![1](https://user-images.githubusercontent.com/63221837/82426452-7fa4a780-9aa5-11ea-9835-7308198b595d.png)
+Click on jenkins
+![2](https://user-images.githubusercontent.com/63221837/82426445-7d424d80-9aa5-11ea-97dd-aeac305d295d.png)
+Click on Global credentials (unrestricted)
+![3](https://user-images.githubusercontent.com/63221837/82426449-7e737a80-9aa5-11ea-903e-6899eb8a5396.png)
+Click on Add Credentials
+![4](https://user-images.githubusercontent.com/63221837/82426451-7f0c1100-9aa5-11ea-9f7f-da6e65415004.png)
+Click on OK
 
 Encode USERNAME and PASSWORD of Postgres using following commands:
 --------
     echo -n "mongoadmin" | base64
     echo -n "admin123" | base64
     
-
 Check secrets:
 -------
     kubectl get secrets
