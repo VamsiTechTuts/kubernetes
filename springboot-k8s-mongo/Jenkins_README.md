@@ -78,13 +78,18 @@ Encode USERNAME and PASSWORD of Postgres using following commands:
     echo -n "admin123" | base64
 Create Jenkins job:
 ------
+Goto Jenkins dashboard
 ![1](https://user-images.githubusercontent.com/63221837/82427807-36edee00-9aa7-11ea-96bb-20861ffc7d99.png)
+Click on New Item
 ![2](https://user-images.githubusercontent.com/63221837/82427809-37868480-9aa7-11ea-89b5-ec099cb73b01.png)
+Enter name for job and select pipeline and click on OK
 ![3](https://user-images.githubusercontent.com/63221837/82427812-381f1b00-9aa7-11ea-84c0-991314eb0acf.png)
+Goto pipeline section and add pipeline script then click on Save
+Deploy Jenkins Job:
+-------
 ![4](https://user-images.githubusercontent.com/63221837/82427814-38b7b180-9aa7-11ea-928e-405815772858.png)
+Click on Build Now
 ![5](https://user-images.githubusercontent.com/63221837/82427856-4705cd80-9aa7-11ea-9d40-7f12da72662a.png)
-![6](https://user-images.githubusercontent.com/63221837/82427848-45d4a080-9aa7-11ea-8ac2-9b5ed12432e7.png)
-![7](https://user-images.githubusercontent.com/63221837/82427852-4705cd80-9aa7-11ea-8362-6da8b0a0d8f5.png)
 
 Check secrets:
 -------
@@ -117,4 +122,8 @@ Get Methods you can check in web UI:
  
 Now we can cleanup:
 --------
+Goto Jenkins dashboard --> Click on Jenkinsjob
+![6](https://user-images.githubusercontent.com/63221837/82427848-45d4a080-9aa7-11ea-8ac2-9b5ed12432e7.png)
+Click on Build with Parameters and select rollback then click on build
+![7](https://user-images.githubusercontent.com/63221837/82427852-4705cd80-9aa7-11ea-8362-6da8b0a0d8f5.png)
     
