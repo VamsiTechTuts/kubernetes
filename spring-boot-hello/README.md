@@ -60,3 +60,7 @@ Check Load balancer service with web UI:
 --------------
     http://a9e4ed685a62e47fab8f7f2b1c36078d-461031710.us-east-1.elb.amazonaws.com:8080/
 ![6](https://user-images.githubusercontent.com/63221837/82745662-9b10fa80-9da4-11ea-847f-3a1eeef251be.png)
+Clean UP:
+------
+    kubectl delete svc spring-boot-hello-loadbalancer spring-boot-hello-nodeport
+    kubectl delete deployments spring-boot-hello
