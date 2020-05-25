@@ -1,0 +1,41 @@
+pipeline{
+    agent any
+    parameters {
+	string(name: 'ImageName', description: "Name of the docker build")
+	string(name: 'ImageTag', description: "Name of the docker build")
+	string(name: 'AppName', description: "Name of the Application")
+    string(name: 'docker_repo', description: "Name of docker repository")
+    }
+    tools { 
+        maven 'maven3' 
+    }
+    stages{
+        stage('git checkout'){
+            steps{
+                git 'https://github.com/VamsiTechTuts/kubernetes.git'
+            }
+        }
+        stage('Build Maven'){
+            steps{
+	           dir("${AppName}"){
+	                sh 'mvn clean install -DskipTests=true'
+                }
+            }
+        }
+        stage("Docker Build") {
+	        steps {
+	            dir("${AppName}") {
+	                sh 'docker build -t ${docker_repo}/${ImageName}:${ImageTag} .'
+	            }
+	        }
+        }
+        stage("Docker Push") {
+	        steps {
+               withCredentials([usernamePassword(credentialsId: 'docker_credentials', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
+                   sh 'docker login -u ${docker_username} -p ${docker_password}'
+               }
+               sh 'docker push ${docker_repo}/${ImageName}:${ImageTag}'
+           }
+        }
+    }
+}
