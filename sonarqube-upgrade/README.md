@@ -1,4 +1,4 @@
-# sonarqube-kubernetes
+# sonarqube-upgrading
 
 Encode USERNAME and PASSWORD of Postgres using following commands:
 --------
@@ -20,9 +20,8 @@ Deploying Postgres with kubectl apply:
 Create PV and PVC for Sonarqube:
 -------------
     kubectl apply -f sonar-pv-data.yml
-    kubectl apply -f sonar-pv-extensions.yml
     kubectl apply -f sonar-pvc-data.yml
-    kubectl apply -f sonar-pvc-extentions.yml
+
 Create configmaps for URL which we use in Sonarqube:
 -------
     kubectl apply -f sonar-configmap.yaml
@@ -47,11 +46,19 @@ Default Credentials for Sonarqube:
     UserName: admin
     PassWord: admin
     
+Upgrading to sonarqube:8-community
+-------------------------
+	kubectl set image deployment sonarqube sonarqube=sonarqube:8-community
+	
+ROllback to sonarqube:7.1
+-------------
+	kubectl rollout undo deployment sonarqube --to-revision=1
+	
 Now we can cleanup by using below commands:
 --------
     kubectl delete deploy postgres sonarqube
     kubectl delete svc postgres sonarqube
-    kubectl delete pvc postgres-pv-claim sonar-data sonar-extensions
-    kubectl delete pv postgres-pv-volume sonar-pv-data sonar-pv-extensions
+    kubectl delete pvc postgres-pv-claim sonar-data
+    kubectl delete pv postgres-pv-volume sonar-pv-data
     kubectl delete configmaps sonar-config
     kubectl delete secrets postgres-secrets
