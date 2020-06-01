@@ -4,7 +4,6 @@ metadata:
   name: jenkins-master-svc
   labels:
     app: jenkins-master
-  namespace: jenkins
 spec:
   type: LoadBalancer
   ports:
@@ -12,5 +11,9 @@ spec:
     targetPort: 8080
     protocol: TCP
     name: http
+  - port: 50000
+    targetPort: 50000
+    protocol: TCP
+    name: slave
   selector:
     app: jenkins-master
