@@ -37,8 +37,8 @@ Now edit get_helm.sh file
 
 Clone code from github:
 -------
-    git clone https://github.com/Naresh240/docker.git
-    cd docker/employee-jdbc-docker   
+    git clone https://github.com/VamsiTechTuts/kubernetes.git
+    cd kubernetes/nodejs-k8s
 Build Maven Artifact:
 -------
     npm install
@@ -76,7 +76,7 @@ Check pods and services:
     kubectl get pods
     kubectl get svc
 Goto Web UI and check whether we are getting output or not:
-![1](https://user-images.githubusercontent.com/63221837/83379604-90d0ab00-a3f9-11ea-8710-9cb1d72d1997.png)
+![2](https://user-images.githubusercontent.com/63221837/83380697-2c631b00-a3fc-11ea-8a67-2eb2eb1a3cbe.png)
 
 Check history of nodejs Application:
 -------
@@ -111,5 +111,10 @@ Goto Web UI and check whether we are getting upgraded output or not:
 How to Rollback using helm:
 ----------
     helm rollback nodejs 1
+![1](https://user-images.githubusercontent.com/63221837/83380642-076ea800-a3fc-11ea-9365-8b55999b94fb.png)
+
+Goto Web UI and check whether we are getting rollback output or not:
+![2](https://user-images.githubusercontent.com/63221837/83380697-2c631b00-a3fc-11ea-8a67-2eb2eb1a3cbe.png)
+
 
 
