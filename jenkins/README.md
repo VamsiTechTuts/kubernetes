@@ -32,6 +32,13 @@ Attach below policy to Node Instance Role
 		}
 	    ]
 	}
+Create Hosted zone with in Route53:
+-------------
+Goto Route53 and Create Hosted Zone with the name of our DNS Name. Here my DNS name is "vamsitechtuts.tk"
+![1](https://user-images.githubusercontent.com/63221837/83413349-4bcc6900-a439-11ea-9633-88c28e6a9935.png)
+
+Change name servers where we purchased our DNS. Here I purchased in Freenom website
+![2](https://user-images.githubusercontent.com/63221837/83413584-b4b3e100-a439-11ea-816d-9da4231da45a.png)
 
 Get Source Code from github:
 ---------------
@@ -89,7 +96,10 @@ change our external dns in external-dns.yaml and also edit certificate arn in se
     kubectl apply -f external-dns.yaml
     kubectl apply -f service-l4.yaml
     kubectl apply -f ingress.yml
+Goto Route53 and check wether Records sets are created or not:
+![1](https://user-images.githubusercontent.com/63221837/83412807-618d5e80-a438-11ea-9dda-b82cb41b06e8.png)
+
 Check output with External-dns with API:
 ----------------
-    jenkins.vamsitechtuts.tk
-  
+Goto web UI and give "jenkins.vamsitechtuts.tk"
+![2](https://user-images.githubusercontent.com/63221837/83412969-a9ac8100-a438-11ea-8af5-c3d7dc726012.png)
