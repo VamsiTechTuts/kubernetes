@@ -56,7 +56,7 @@ Create helm chart:
 ------
     helm create nodejs
 Edit values.yml file
--------
+
     vi nodejs/values.yaml
 Edit image as shown below:
 
