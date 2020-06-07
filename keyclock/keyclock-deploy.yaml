@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ikonnekt-keycloak-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ikonnekt-keycloak
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ikonnekt-keycloak
+        project: ikonnekt
+        environment: development
+    spec:
+      containers:
+      - name: ikonnekt-keycloak
+        image: jboss/keycloak
+        imagePullPolicy: Always
+        env:
+        - name: PROXY_ADDRESS_FORWARDING
+          value: "true"
+        - name: KEYCLOAK_LOGLEVEL
+          value: DEBUG
+        - name: ROOT_LOGLEVEL
+          value: DEBUG
+        ports:
+        - containerPort: 8080
+          name: http-port
+          protocol: TCP

@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: host-rule-ingress
+  annotations:
+    certmanager.k8s.io/issuer: acme-letsencrypt-production
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-allow-headers: Authorization, origin, accept
+    nginx.ingress.kubernetes.io/cors-allow-methods: GET, OPTIONS
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+spec:
+  rules:
+  - host: keyclock.vamsitechtuts.tk
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: keyclock-svc
+          servicePort: 80
+
+  tls:
+  - hosts:
+    - keyclock.vamsitechtuts.tk
+    secretName: vamsitechtuts-tls
