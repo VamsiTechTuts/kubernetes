@@ -25,7 +25,7 @@ I purchased doamin from Godaddy site and added Nameservers here:
 Cretificate issue from https://www.sslforfree.com
 ----
 
-![image](https://user-images.githubusercontent.com/63221837/87848953-895e5600-c902-11ea-809f-568aa00c87f2.png)
+![image](https://user-images.githubusercontent.com/63221837/87849220-7187d180-c904-11ea-9329-3b168331d2f0.png)
 
 Clone code from github:
 -------------
