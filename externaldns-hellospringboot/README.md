@@ -47,8 +47,8 @@ Push docker image to dockerhub:
 Create secret by using kubectl command:
 -----------
     kubectl create secret tls spring-tls \
-      --key springboot-tls.key \
-      --cert springboot-tls.crt
+      --key private.key \
+      --cert certificate.crt
 This secrect we need to give in "ingress.yml" file
 Deploy Nginx-Ingress-Controller using below commands:
 -----------
