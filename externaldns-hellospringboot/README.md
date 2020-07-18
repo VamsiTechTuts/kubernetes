@@ -60,6 +60,7 @@ Add NGINX Helm repository:
 To install the chart with the release name my-release (my-release is the name that you choose):
 
     helm install my-release nginx-stable/nginx-ingress
+    kubectl scale --replicas 2 deployment/my-release-nginx-ingress
 
 Note:
 ----
