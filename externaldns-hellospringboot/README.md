@@ -11,7 +11,22 @@ Pre-requisites:
   - Create Hosted zone with domain name with in Route53
   - Need to have cerified DNS with primary.key & certificate.crt
   - Create CNAME record set for DNS name with in Hosted Zone
-  
+
+Check Hosted zone with domain name with in ROute53:
+-----------
+
+![image](https://user-images.githubusercontent.com/63221837/87849166-fcb49780-c903-11ea-82e3-223ac37d408d.png)
+
+I purchased doamin from Godaddy site and added Nameservers here:
+---
+
+![image](https://user-images.githubusercontent.com/63221837/87849183-279eeb80-c904-11ea-9a5d-0f6688c42293.png)
+
+Cretificate issue from https://www.sslforfree.com
+----
+
+![image](https://user-images.githubusercontent.com/63221837/87848953-895e5600-c902-11ea-809f-568aa00c87f2.png)
+
 Clone code from github:
 -------------
     git clone https://github.com/Naresh240/spring-boot-hello.git
