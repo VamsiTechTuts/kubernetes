@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-master
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+        app: jenkins-master
+  template:
+    metadata:
+      labels:
+        app: jenkins-master
+    spec:
+      containers:
+       - name: jenkins-leader
+         image: jenkins/jenkins
+         volumeMounts:
+          - name: jenkins-home
+            mountPath: /var/jenkins_home
+          - name: docker-sock-volume
+            mountPath: /var/run/docker.sock
+         resources:
+           requests:
+             memory: "1024Mi"
+             cpu: "0.5"
+           limits: 
+             memory: "1024Mi"
+             cpu: "0.5"
+         ports:
+           - name: http-port
+             containerPort: 8080
+           - name: jnlp-port
+             containerPort: 50000
+      volumes:
+       - name: jenkins-home
+         emptyDir: {}
+       - name: docker-sock-volume
+         hostPath:
+           path: /var/run/docker.sock

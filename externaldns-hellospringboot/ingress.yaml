@@ -16,4 +16,4 @@ spec:
       - path: /
         backend:
           serviceName: spring-boot-hello-loadbalancer
-          servicePort: 80
+          servicePort: 8081
