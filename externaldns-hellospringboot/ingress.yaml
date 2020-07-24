@@ -10,7 +10,7 @@ spec:
     - springboot.vamsiawstraining.com
     secretName: spring-tls
   rules:
-  - host: springboot.vamsiawstraining.com
+  - host: springboot.vamsiawstraining.com 
     http:
       paths:
       - path: /
