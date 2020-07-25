@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
        - name: jenkins-leader
-         image: jenkins/jenkins
+         image: jenkins/jenkins:lts
          volumeMounts:
           - name: jenkins-home
             mountPath: /var/jenkins_home
