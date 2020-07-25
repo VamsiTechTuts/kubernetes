@@ -92,6 +92,5 @@ Check in browser:
 Clean UP:
 ------
     kubectl delete ingress springboot-ingress
-    helm delete my-release
     kubectl delete svc spring-boot-hello-loadbalancer
     kubectl delete deployments spring-boot-hello
