@@ -54,17 +54,12 @@ Deploy Nginx-Ingress-Controller using below commands:
 -----------
 Add NGINX Helm repository:
 
-    helm repo add nginx-stable https://helm.nginx.com/stable
-    helm repo update
-
-To install the chart with the release name my-release (my-release is the name that you choose):
-
-    helm install my-release nginx-stable/nginx-ingress
-    kubectl scale --replicas 2 deployment/my-release-nginx-ingress
+    cd nginx-ingress-controller
+    kubectl apply -f .
 
 Note:
 ----
-Create "A" record set with nginx-control loadbalancer
+Create "A" record set with nginx ingress controler loadbalancer
 
 Deploy Springboot Application on EKS-Cluster:
 ------------
