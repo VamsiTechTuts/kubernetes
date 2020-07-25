@@ -7,7 +7,6 @@ Pre-requisites:
   - Install Maven
   - Install Docker
   - EKS Cluster setup
-  - Install Helm3
   - Create Hosted zone with domain name with in Route53
   - Need to have cerified DNS with primary.key & certificate.crt
   - Create CNAME record set for DNS name with in Hosted Zone
