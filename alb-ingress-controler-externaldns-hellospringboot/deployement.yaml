@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-hello
+  labels:
+    app: spring-boot-hello
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-boot-hello
+  template:
+    metadata:
+      labels:
+        app: spring-boot-hello
+    spec:
+      containers:
+      - name: spring-cloud-discovery
+        image: vamsitechtuts/springboothello:latest
+        ports:
+        - containerPort: 8081
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          initialDelaySeconds: 3
+          periodSeconds: 3
